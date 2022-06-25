@@ -32,4 +32,14 @@ class Bank implements BankOperation {
         .orElse(false);
   }
 
+  public boolean withdraw(int accountNumber, int amount) {
+    return Optional.ofNullable(getAccount(accountNumber))
+        .map(account -> {
+          final boolean wasWithdrawn = account.withdraw(amount);
+          accountRepository.save(account);
+          return wasWithdrawn;
+        })
+        .orElse(false);
+  }
+
 }

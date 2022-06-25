@@ -20,6 +20,15 @@ final class Account {
     this.accountBalance += amount;
   }
 
+  boolean withdraw(int amount) {
+    if (this.accountBalance >= amount) {
+      this.accountBalance -= amount;
+      return true;
+    }
+
+    return false;
+  }
+
   int getAccountNumber() {
     return accountNumber;
   }

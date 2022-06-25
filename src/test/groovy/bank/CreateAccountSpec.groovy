@@ -5,7 +5,7 @@ import spock.lang.Specification
 
 class CreateAccountSpec extends Specification {
 
-    Bank bank
+    BankOperation bank
 
     def setup() {
         bank = new Bank()
