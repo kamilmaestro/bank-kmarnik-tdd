@@ -11,6 +11,7 @@ class Bank implements BankOperation {
     this.accountRepository = new InMemoryAccountRepository();
   }
 
+  @Override
   public int createAccount() {
     ++accountNumber;
     accountRepository.save(Account.createNewAccount(accountNumber));
@@ -18,10 +19,12 @@ class Bank implements BankOperation {
     return accountNumber;
   }
 
+  @Override
   public Account getAccount(int accountNumber) {
     return accountRepository.getByNumber(accountNumber);
   }
 
+  @Override
   public boolean deposit(int accountNumber, int amount) {
     return Optional.ofNullable(getAccount(accountNumber))
         .map(account -> {
@@ -32,6 +35,7 @@ class Bank implements BankOperation {
         .orElse(false);
   }
 
+  @Override
   public boolean withdraw(int accountNumber, int amount) {
     return Optional.ofNullable(getAccount(accountNumber))
         .map(account -> {
@@ -40,6 +44,14 @@ class Bank implements BankOperation {
           return wasWithdrawn;
         })
         .orElse(false);
+  }
+
+  @Override
+  public int accountBalance(int accountNumber) {
+    final Account account = getAccount(accountNumber);
+    return Optional.ofNullable(account)
+        .map(Account::getAccountBalance)
+        .orElse(ACCOUNT_NOT_EXISTS);
   }
 
 }
