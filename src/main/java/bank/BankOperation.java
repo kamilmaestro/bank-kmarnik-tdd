@@ -9,5 +9,6 @@ public interface BankOperation {
   boolean deposit(int accountNumber, int amount);
   boolean withdraw(int accountNumber, int amount);
   int accountBalance(int accountNumber);
+  int deleteAccount(int accountNumber);
 
 }

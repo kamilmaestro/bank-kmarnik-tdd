@@ -17,4 +17,9 @@ class InMemoryAccountRepository implements AccountRepository  {
     return values.get(accountNumber);
   }
 
+  @Override
+  public void delete(int accountNumber) {
+    values.remove(accountNumber);
+  }
+
 }

@@ -54,4 +54,14 @@ class Bank implements BankOperation {
         .orElse(ACCOUNT_NOT_EXISTS);
   }
 
+  @Override
+  public int deleteAccount(int accountNumber) {
+    final int deletedAccountBalance = accountBalance(accountNumber);
+    if (deletedAccountBalance != ACCOUNT_NOT_EXISTS) {
+      accountRepository.delete(accountNumber);
+    }
+
+    return deletedAccountBalance;
+  }
+
 }
