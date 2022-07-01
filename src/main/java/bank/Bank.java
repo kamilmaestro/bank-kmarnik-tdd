@@ -64,4 +64,15 @@ class Bank implements BankOperation {
     return deletedAccountBalance;
   }
 
+  @Override
+  public boolean transfer(int fromAccountNumber, int toAccountNumber, int amount) {
+    final Account account = getAccount(fromAccountNumber);
+    final Account transferTo = getAccount(toAccountNumber);
+    if (Optional.ofNullable(account).isPresent() && Optional.ofNullable(transferTo).isPresent()) {
+      return account.transfer(transferTo, amount);
+    }
+
+    return false;
+  }
+
 }

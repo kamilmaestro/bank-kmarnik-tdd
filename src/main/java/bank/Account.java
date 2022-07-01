@@ -37,4 +37,15 @@ final class Account {
     return accountBalance;
   }
 
+  boolean transfer(Account transferTo, int amount) {
+    if (this.accountBalance >= amount) {
+      withdraw(amount);
+      transferTo.deposit(amount);
+
+      return true;
+    }
+
+    return false;
+  }
+
 }
