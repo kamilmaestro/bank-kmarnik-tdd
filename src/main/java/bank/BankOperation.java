@@ -11,5 +11,6 @@ public interface BankOperation {
   int accountBalance(int accountNumber);
   int deleteAccount(int accountNumber);
   boolean transfer(int fromAccount, int toAccount, int amount);
+  int sumAccountsBalance();
 
 }

@@ -75,4 +75,10 @@ class Bank implements BankOperation {
     return false;
   }
 
+  public int sumAccountsBalance() {
+    return accountRepository.findAll().stream()
+        .mapToInt(Account::getAccountBalance)
+        .sum();
+  }
+
 }

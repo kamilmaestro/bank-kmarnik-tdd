@@ -1,6 +1,8 @@
 package bank;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class InMemoryAccountRepository implements AccountRepository  {
@@ -20,6 +22,11 @@ class InMemoryAccountRepository implements AccountRepository  {
   @Override
   public void delete(int accountNumber) {
     values.remove(accountNumber);
+  }
+
+  @Override
+  public List<Account> findAll() {
+    return new ArrayList<>(values.values());
   }
 
 }
