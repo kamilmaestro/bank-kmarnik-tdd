@@ -18,9 +18,9 @@ class DeleteAccountSpec extends Specification {
     def "should delete account with empty balance" () {
         given: "there is an account"
             int accountNumber = bank.createAccount()
-        when: "deletes account"
+        when: "deletes this account"
             int deletedAccountBalance = bank.deleteAccount(accountNumber)
-        then: "gets empty balance of deleted account"
+        then: "gets an empty balance of deleted account"
             deletedAccountBalance == 0
     }
 
@@ -36,7 +36,7 @@ class DeleteAccountSpec extends Specification {
         given: "there is an account with balance #deposited"
             int accountNumber = bank.createAccount()
             bank.deposit(accountNumber, deposited)
-        when: "deletes account"
+        when: "deletes this account"
             int deletedAccountBalance = bank.deleteAccount(accountNumber)
         then: "gets balance equals to #balance of deleted account"
             deletedAccountBalance == balance

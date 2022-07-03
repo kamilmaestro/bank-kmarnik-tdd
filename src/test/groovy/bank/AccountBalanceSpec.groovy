@@ -21,7 +21,7 @@ class AccountBalanceSpec extends Specification {
             int accountNumber = bank.createAccount()
         and: "this account has balance equals to #balance"
             bank.deposit(accountNumber, balance)
-        when: "wants to get balance of the account"
+        when: "gets balance of the account"
             int accountBalance = bank.accountBalance(accountNumber)
         then: "balance equals to #expected"
             accountBalance == expected
@@ -33,7 +33,7 @@ class AccountBalanceSpec extends Specification {
     }
 
     def "should not get balance of a not existing account" () {
-        when: "wants to get balance of the account"
+        when: "gets balance of the account"
             int accountBalance = bank.accountBalance(1)
         then: "there is no such account"
             accountBalance == BankOperation.ACCOUNT_NOT_EXISTS

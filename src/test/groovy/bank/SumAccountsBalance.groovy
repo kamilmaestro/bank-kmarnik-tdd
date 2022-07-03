@@ -21,9 +21,9 @@ class SumAccountsBalance extends Specification {
         and: "those account have balances"
             bank.deposit(accountNumber, 100)
             bank.deposit(sndAccountNumber, 15)
-        when: "wants to get balance of all accounts"
+        when: "gets balance of all accounts"
             int accountBalance = bank.sumAccountsBalance()
-        then: "get sum of all balances"
+        then: "obtained balance contains balances of all accounts"
             accountBalance == 115
     }
 }

@@ -15,17 +15,11 @@ class CreateAccountSpec extends Specification {
     def "should create an account with specified account number"() {
         when: "the account is created"
             int number = bank.createAccount()
-        then: "check account number"
-            number == accountNumber
-        where:
-            user   | accountNumber
-            'John' | 1
-            'Tom'  | 2
-            'Mike' | 3
-            'Todd' | 4
+        then: "account has assigned an number"
+            number == 1
     }
 
-    def "should create new account with empty balance" () {
+    def "should create new account with an empty balance" () {
         when: "the account is created"
             int accountNumber = bank.createAccount()
         then: "account balance is empty"
